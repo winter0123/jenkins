@@ -1,6 +1,6 @@
 package com.example.jenkins.repository;
 
-import com.example.kubernetes01.entity.Test;
+import com.example.jenkins.entity.Test;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
