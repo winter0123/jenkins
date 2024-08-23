@@ -15,6 +15,7 @@ public class TestController {
     @GetMapping(value = "/")
     public ResponseEntity<String> test() {
         String name = testService.testService();
+        System.out.println("v1");
         return ResponseEntity.ok(name);
     }
 }
