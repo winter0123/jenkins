@@ -1,7 +1,7 @@
 package com.example.jenkins.service;
 
-import com.example.kubernetes01.entity.Test;
-import com.example.kubernetes01.repository.TestRepository;
+import com.example.jenkins.entity.Test;
+import com.example.jenkins.repository.TestRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
