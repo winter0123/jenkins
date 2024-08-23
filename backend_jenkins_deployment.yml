@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-jenkins-deployment  # Deployment의 이름을 정의합니다.
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+  minReadySeconds: 10
+  selector:
+    matchLabels:
+      app: backend-jenkins  # Pod와 연결되는 레이블을 정의합니다. Service에서 이 레이블을 사용하여 Pod를 선택합니다.
+  template:
+    metadata:
+      labels:
+        app: backend-jenkins  # Pod의 레이블을 정의합니다. 이 레이블은 Service의 selector와 일치해야 합니다.
+    spec:
+      containers:
+        - name: backend-jenkins-app
+          image: cloudmist/sample:latest
+          terminationGracePeriodSeconds: 3 # 컨테이너가 종료 요청을 받았을 때 3초의 유예 기간을 제공
+          env:
+            - name: DB_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-cm  # ConfigMap의 이름을 참조합니다.
+                  key: DB_URL       # ConfigMap에서 DB_URL 키의 값을 가져옵니다.
+            - name: DB_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-cm
+                  key: DB_USERNAME
+            - name: DB_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-cm
+                  key: DB_PASSWORD
+            - name: SPRING_PROFILES_ACTIVE
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-cm
+                  key: SPRING_PROFILES_ACTIVE
