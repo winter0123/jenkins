@@ -15,10 +15,10 @@ spec:
       labels:
         app: backend-jenkins  # Pod의 레이블을 정의합니다. 이 레이블은 Service의 selector와 일치해야 합니다.
     spec:
+      terminationGracePeriodSeconds: 3 # 컨테이너가 종료 요청을 받았을 때 3초의 유예 기간을 제공
       containers:
         - name: backend-jenkins-app
           image: cloudmist/sample:latest
-          terminationGracePeriodSeconds: 3 # 컨테이너가 종료 요청을 받았을 때 3초의 유예 기간을 제공
           env:
             - name: DB_URL
               valueFrom:
