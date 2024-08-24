@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: backend-jenkins-deployment  # Deployment의 이름을 정의합니다.
 spec:
-  replicas: 2
+  replicas: 1
   strategy:
     type: RollingUpdate
   minReadySeconds: 10
