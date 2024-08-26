@@ -12,7 +12,7 @@ public class TestController {
 
     private final TestService testService;
 
-    @GetMapping(value = "/")
+    @GetMapping(value = "/test")
     public ResponseEntity<String> test() {
         String name = testService.testService();
         System.out.println("v1.5");
