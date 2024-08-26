@@ -15,7 +15,7 @@ public class TestController {
     @GetMapping(value = "/test")
     public ResponseEntity<String> test() {
         String name = testService.testService();
-        System.out.println("v1.5");
+        System.out.println("v1.6");
         return ResponseEntity.ok(name);
     }
 }
